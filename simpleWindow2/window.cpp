@@ -4,6 +4,14 @@ LPCWSTR g_szClassName = L"myWindowClass";
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	switch (msg) {
+	case WM_LBUTTONDOWN:
+	{
+		TCHAR szFileName[MAX_PATH];
+		HINSTANCE hInstance = GetModuleHandle(NULL);
+		GetModuleFileNameW(hInstance, szFileName, MAX_PATH);
+		MessageBox(hwnd, szFileName, L"This program is:", MB_OK | MB_ICONINFORMATION);
+	}
+		break;
 	case WM_CLOSE:
 		DestroyWindow(hwnd);
 		break;
